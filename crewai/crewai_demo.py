@@ -144,16 +144,19 @@ def search_travel_costs(destination: str) -> str:
 
 def create_flight_agent(destination: str, trip_dates: str):
     """Create the Flight Specialist agent with real research tools."""
+    # Exercise 2: The original role is "Flight Specialist" and backstory is short (2-3 lines)
     return Agent(
-        role="Flight Specialist",
+        role="Senior Aviation Travel Consultant",
         goal=f"Research and recommend the best flight options for the {destination} trip "
              f"({trip_dates}), considering dates, airlines, prices, and flight durations. "
              f"Use real data from flight booking sites to provide accurate, current pricing.",
-        backstory="You are an experienced flight specialist with deep knowledge of "
-                  "airline schedules, pricing patterns, and travel routes. You excel at "
-                  "finding the best flight options that balance cost and convenience. "
-                  "You have booked thousands of flights and know the best times to fly. "
-                  "You always research current prices and use real booking site data.",
+        backstory="You are a seasoned aviation travel consultant with over 15 years of experience "
+                  "in the travel industry. You have deep knowledge of airline schedules, pricing patterns, "
+                  "and international travel routes. You excel at finding the best flight options that "
+                  "balance cost, convenience, and comfort. You have personally booked over 10,000 flights "
+                  "and understand seasonal trends, airline alliances, and loyalty programs. You stay "
+                  "updated with real-time pricing and always research current market rates from major "
+                  "booking platforms to ensure your clients get the best value.",
         tools=[search_flight_prices],
         verbose=True,
         allow_delegation=False
@@ -217,6 +220,75 @@ def create_budget_agent(destination: str):
                   "compromising the travel experience. You research actual current prices "
                   "and provide realistic budget estimates.",
         tools=[search_travel_costs],
+        verbose=True,
+        allow_delegation=False
+    )
+
+
+def create_weather_agent(destination: str):
+    """Create the Weather & Climate Specialist agent."""
+    return Agent(
+        role="Weather & Climate Specialist",
+        goal=f"Research and provide comprehensive weather information for {destination} "
+             f"to help optimize trip planning and packing recommendations.",
+        backstory="You are a professional meteorologist and travel weather consultant with expertise "
+                  "in analyzing climate patterns, seasonal weather trends, and how weather impacts "
+                  "travel experiences. You provide detailed forecasts, packing lists, and activity "
+                  "recommendations based on expected weather conditions. You've helped thousands of "
+                  "travelers prepare for optimal travel experiences by providing accurate climate data.",
+        tools=[search_attractions_activities],
+        verbose=True,
+        allow_delegation=False
+    )
+
+
+def create_dining_agent(destination: str):
+    """Create the Culinary Experience Specialist agent."""
+    return Agent(
+        role="Culinary Experience Specialist",
+        goal=f"Research and recommend the best dining experiences, local cuisine, and food tours in {destination} "
+             f"considering authenticity, ratings, and various dietary preferences.",
+        backstory="You are a professional food critic and culinary travel expert with extensive knowledge of "
+                  "international cuisines and local food scenes. You have dined at thousands of restaurants "
+                  "worldwide and can identify authentic, high-quality dining experiences. You understand dietary "
+                  "restrictions, local food culture, and can recommend everything from street food to Michelin-starred "
+                  "restaurants. Your recommendations help travelers experience the true flavors of their destination.",
+        tools=[search_travel_costs, search_attractions_activities],
+        verbose=True,
+        allow_delegation=False
+    )
+
+
+def create_photography_agent(destination: str):
+    """Create the Photography & Sightseeing Guide agent."""
+    return Agent(
+        role="Photography & Sightseeing Guide",
+        goal=f"Identify the best photo opportunities, scenic viewpoints, and must-see sights in {destination} "
+             f"with specific timing recommendations for optimal lighting and fewer crowds.",
+        backstory="You are a professional travel photographer and sightseeing guide with an expert eye for "
+                  "capturing beautiful moments. You know the best times of day for photography at various "
+                  "locations, understand golden hour opportunities, and can guide travelers to both famous "
+                  "landmarks and hidden photogenic spots. You've photographed destinations worldwide and "
+                  "understand composition, lighting, and how to avoid tourist crowds for the perfect shot.",
+        tools=[search_attractions_activities],
+        verbose=True,
+        allow_delegation=False
+    )
+
+
+def create_local_culture_agent(destination: str):
+    """Create the Local Culture & Etiquette Expert agent."""
+    return Agent(
+        role="Local Culture & Etiquette Expert",
+        goal=f"Provide comprehensive cultural insights, local customs, etiquette tips, and language basics "
+             f"for {destination} to ensure respectful and enriching cultural interactions.",
+        backstory="You are a cultural anthropologist and international etiquette consultant who has lived in "
+                  "numerous countries and studied cross-cultural communication. You understand the nuances of "
+                  "local customs, social norms, appropriate behavior, and cultural sensitivities. You help "
+                  "travelers navigate unfamiliar cultural landscapes with respect and confidence, teaching them "
+                  "essential phrases, tipping customs, dress codes, and social etiquette to enhance their travel "
+                  "experience and avoid cultural faux pas.",
+        tools=[search_attractions_activities],
         verbose=True,
         allow_delegation=False
     )

@@ -99,27 +99,59 @@ Configuration Summary:
 class AgentConfig:
     """Configuration for individual agents"""
 
+    # Exercise 2: The original is "Market Researcher"
     RESEARCH_AGENT = {
         "name": "ResearchAgent",
-        "role": "Market Researcher",
+        "role": "Senior Market Research Strategist specializing in competitive analysis, consumer behavior insights, and market trend identification for product marketing campaigns",
         "temperature": 0.7,
     }
 
+    # Exercise 3: The original is "Product Analyst"
     ANALYSIS_AGENT = {
         "name": "AnalysisAgent",
-        "role": "Product Analyst",
+        "role": "Strategic Product Marketing Analyst with expertise in identifying target audience segments, positioning strategies, and competitive differentiation opportunities",
         "temperature": 0.7,
     }
 
+    # Exercise 3: The original is "Product Designer"
     BLUEPRINT_AGENT = {
         "name": "BlueprintAgent",
-        "role": "Product Designer",
+        "role": "Creative Marketing Campaign Designer specializing in multi-channel marketing strategies, content planning, and customer journey mapping",
         "temperature": 0.7,
     }
 
+    # Exercise 3: The original is "Product Reviewer"
     REVIEWER_AGENT = {
         "name": "ReviewerAgent",
-        "role": "Product Reviewer",
+        "role": "Chief Marketing Officer with 20+ years experience in evaluating marketing strategies, ROI forecasting, and providing actionable recommendations for campaign optimization",
+        "temperature": 0.7,
+    }
+
+    # Additional Scenario Agents - Conference Planning
+    CONFERENCE_THEME_AGENT = {
+        "name": "ConferenceThemeAgent",
+        "role": "Conference Theme Strategist specializing in identifying trending topics and creating engaging conference themes for technology events",
+        "temperature": 0.7,
+    }
+
+    # Additional Scenario Agents - Academic Research
+    LITERATURE_REVIEW_AGENT = {
+        "name": "LiteratureReviewAgent",
+        "role": "Academic Research Specialist with expertise in conducting comprehensive literature reviews and identifying research trends",
+        "temperature": 0.7,
+    }
+
+    # Additional Scenario Agents - Software Architecture
+    SYSTEM_ARCHITECT_AGENT = {
+        "name": "SystemArchitectAgent",
+        "role": "Principal Software Architect specializing in designing scalable microservices architectures and cloud-native systems",
+        "temperature": 0.7,
+    }
+
+    # Additional Scenario Agents - Product Strategy
+    USER_EXPERIENCE_AGENT = {
+        "name": "UserExperienceAgent",
+        "role": "Senior UX Researcher and Designer focusing on user-centered design principles and creating intuitive user journeys",
         "temperature": 0.7,
     }
 
@@ -131,6 +163,10 @@ class AgentConfig:
             "analysis": cls.ANALYSIS_AGENT,
             "blueprint": cls.BLUEPRINT_AGENT,
             "reviewer": cls.REVIEWER_AGENT,
+            "conference_theme": cls.CONFERENCE_THEME_AGENT,
+            "literature_review": cls.LITERATURE_REVIEW_AGENT,
+            "system_architect": cls.SYSTEM_ARCHITECT_AGENT,
+            "user_experience": cls.USER_EXPERIENCE_AGENT,
         }
         return agents.get(agent_type, {})
 
